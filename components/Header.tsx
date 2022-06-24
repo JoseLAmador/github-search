@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HOME_LINKS } from "@/utils/contants";
 
 const linkCls = "inline-block py-2 px-2";
 const liCls = "hover:bg-primary-400 rounded";
@@ -13,16 +14,13 @@ function Header() {
               <a className={linkCls}>Inicio</a>
             </Link>
           </li>
-          <li className={liCls}>
-            <Link href="/search-user">
-              <a className={linkCls}>Search user</a>
-            </Link>
-          </li>
-          <li className={liCls}>
-            <Link href="/search-repo">
-              <a className={linkCls}>Search repository</a>
-            </Link>
-          </li>
+          { HOME_LINKS?.map((item) => (
+            <li key={item?.label} className={liCls}>
+              <Link href={item?.to}>
+                <a className={linkCls}>Search {item?.slug}</a>
+              </Link>
+            </li>
+          )) }
         </ul>
       </nav>
     </header>

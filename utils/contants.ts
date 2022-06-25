@@ -15,4 +15,6 @@ export const HOME_LINKS = [
     ipsam a rem sunt facere impedit culpa est voluptates eos eligendi illum praesentium
     voluptatibus amet. Obcaecati, autem quo.`
   }
-]
+];
+
+export const BASE_URL = process?.env.NEXT_PUBLIC_GH_API;

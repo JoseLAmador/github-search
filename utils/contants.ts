@@ -8,9 +8,9 @@ export const HOME_LINKS = [
     voluptatibus amet. Obcaecati, autem quo.`
   },
   {
-    to: "/search-repo",
-    label: "Github repository",
-    slug: "repository",
+    to: "/search-repos",
+    label: "Github repositories",
+    slug: "repositories",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati reiciendis ullam,
     ipsam a rem sunt facere impedit culpa est voluptates eos eligendi illum praesentium
     voluptatibus amet. Obcaecati, autem quo.`

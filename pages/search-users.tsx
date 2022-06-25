@@ -6,7 +6,7 @@ import UserCardSkeleton from "@/components/skeletons/UserCardSkeleton";
 import Input from "@/components/Input";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ErrorMessage";
-import useGithubUser from "@/hooks/useGithubUser";
+import useGithubUsers from "@/hooks/useGithubUsers";
 import useDebounce from "@/utils/useDebounce";
 import type { ReactElement } from "react";
 
@@ -30,7 +30,7 @@ function IndexPage(){
    */
   const searchDebounce = useDebounce(search, 500);
 
-  const { data, isLoading, isError, isIdle } = useGithubUser(searchDebounce, {
+  const { data, isLoading, isError, isIdle } = useGithubUsers(searchDebounce, {
     refetchOnWindowFocus: false,
     enabled: !!searchDebounce // only fetch user if search has value
   });
@@ -50,7 +50,7 @@ function IndexPage(){
               onChange={(event) => setSearch(event?.target?.value)}
             />
             <p className="text-xs italic text-primary-200">
-              Note: If you don't remember any Github user you should try with:
+              Note: If you dont remember any Github user you should try with:
               <button type="button" className="pl-1 underline" onClick={() => setSearch("JoseLAmador")}>
                 JoseLAmador
               </button>
@@ -70,7 +70,7 @@ function IndexPage(){
                   Please start searching for a Github user, to see the results.
                 </p>
                 <p className="text-xs italic text-primary-200 text-center">
-                  Note: If you don't remember any Github user you should try with:
+                  Note: If you dont remember any Github user you should try with:
                   <button type="button" className="pl-1 underline" onClick={() => setSearch("JoseLAmador")}>
                     JoseLAmador
                   </button>

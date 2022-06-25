@@ -40,7 +40,7 @@ function IndexPage(){
   return (
     <>
       <TitleSection
-        title="Search user"
+        title="Search users"
         description="You can search for Github users">
           <div className="w-full lg:w-1/2 space-y-1">
             <Input

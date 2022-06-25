@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NextHead from "next/head";
 import BaseLayout from "@/layouts/BaseLayout";
 import { HOME_LINKS } from "@/utils/contants";
 import type { ReactElement } from "react";
@@ -6,6 +7,9 @@ import type { ReactElement } from "react";
 function Home(){
   return (
     <>
+      <NextHead>
+        <title>Github search</title>
+      </NextHead>
       <section className="px-4 xl:px-0 bg-primary-50">
         <div className="py-10 mx-auto max-w-screen-xl">
           <h1 className="text-3xl font-bold text-primary-500">

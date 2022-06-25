@@ -1,3 +1,4 @@
+import NextHead from "next/head";
 import { useState } from "react";
 import BaseLayout from "@/layouts/BaseLayout";
 import TitleSection from "@/components/TitleSection";
@@ -39,6 +40,9 @@ function IndexPage(){
 
   return (
     <>
+      <NextHead>
+        <title>Search repos</title>
+      </NextHead>
       <TitleSection
         title="Search repositories"
         description="You can search for Github repositories">

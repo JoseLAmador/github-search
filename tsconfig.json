@@ -19,6 +19,7 @@
       "@/components/*": ["components/*"],
       "@/layouts/*": ["layouts/*"],
       "@/utils/*": ["utils/*"],
+      "@/hooks/*": ["hooks/*"],
     },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

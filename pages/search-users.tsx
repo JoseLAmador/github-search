@@ -1,5 +1,6 @@
 import NextHead from "next/head";
 import { useState } from "react";
+import { dehydrate, QueryClient } from "react-query";
 import BaseLayout from "@/layouts/BaseLayout";
 import TitleSection from "@/components/TitleSection";
 import Users from "@/components/Users";
@@ -7,9 +8,13 @@ import UserCardSkeleton from "@/components/skeletons/UserCardSkeleton";
 import Input from "@/components/Input";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ErrorMessage";
-import useGithubUsers from "@/hooks/useGithubUsers";
+import useGithubUsers, { headers } from "@/hooks/useGithubUsers";
 import useDebounce from "@/utils/useDebounce";
+import fetcher from "@/utils/fetcher";
+import { BASE_URL } from "@/utils/contants";
 import type { ReactElement } from "react";
+import type { GithubUser } from "types/github-user";
+import type { Results } from "types/common";
 
 /**
  * Display 9 user card skeletons
@@ -101,6 +106,27 @@ IndexPage.getLayout = (page: ReactElement) => {
       {page}
     </BaseLayout>
   );
+}
+
+export async function getStaticProps(){
+  const queryClient = new QueryClient();
+  const defaultUser = "JoseLAmador";
+
+  /**
+   * Prefetch the results of "githubUsers" query
+   * to be placed into the cache.
+   * In case the user selects the defaultUser.
+   */
+  await queryClient?.prefetchQuery(["githubUsers", defaultUser], async () => {
+    const data = await fetcher<Results<GithubUser>>(`${BASE_URL}/search/users?q=${defaultUser}&per_page=9`, headers);
+    return data;
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    }
+  }
 }
 
 export default IndexPage;

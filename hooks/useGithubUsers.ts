@@ -5,7 +5,7 @@ import type { UseQueryOptions } from "react-query";
 import type { GithubUser } from "types/github-user";
 import type { Results } from "types/common";
 
-const headers = new Headers({
+export const headers = new Headers({
   "Content-Type": "application/json;charset=UTF-8",
 });
 
